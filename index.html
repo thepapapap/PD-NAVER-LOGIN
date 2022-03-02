@@ -19,8 +19,6 @@
     });
     var clientId = params.clientId;
     var callbackUrl = decodeURIComponent(params.callbackUrl);
-    alert('clientId: ' + clientId);
-    alert('callbackUrl: ' + callbackUrl);
     const naverLogin = new naver.LoginWithNaverId({
       clientId: clientId,
       callbackUrl: callbackUrl,
