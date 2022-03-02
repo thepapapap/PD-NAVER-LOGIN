@@ -17,11 +17,11 @@
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });
-    alert('clientId: ' + params.clientId);
-    alert('callbackUrl: ' + params.callbackUrl);
+    //alert('clientId: ' + params.clientId);
+    //alert('callbackUrl: ' + params.callbackUrl);
     const naverLogin = new naver.LoginWithNaverId({
-      clientId: params.clientId,
-      callbackUrl: params.callbackUrl,
+      clientId: 'BViwH6yvDbz50hkxKzJR',
+      callbackUrl: 'http://pd-api.ap-northeast-2.elasticbeanstalk.com/naver/login/callback',
       isPopup: false,
       loginButton: { color: "green", type: 3, height: "0" },
     });
