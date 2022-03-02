@@ -17,6 +17,8 @@
     const params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });
+    alert('clientId: ' + params.clientId);
+    alert('callbackUrl: ' + params.callbackUrl);
     const naverLogin = new naver.LoginWithNaverId({
       clientId: params.clientId,
       callbackUrl: params.callbackUrl,
