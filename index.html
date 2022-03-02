@@ -14,14 +14,16 @@
   <div id="naverIdLogin"></div>
   <!-- //네이버 로그인 버튼 노출 영역 -->
   <script type="text/javascript">
-    const params = new Proxy(new URLSearchParams(window.location.search), {
+    var params = new Proxy(new URLSearchParams(window.location.search), {
       get: (searchParams, prop) => searchParams.get(prop),
     });
-    //alert('clientId: ' + params.clientId);
-    //alert('callbackUrl: ' + params.callbackUrl);
+    var clientId = params.clientId;
+    var callbackUrl = decodeURIComponent(params.callbackUrl);
+    alert('clientId: ' + clientId);
+    alert('callbackUrl: ' + callbackUrl);
     const naverLogin = new naver.LoginWithNaverId({
-      clientId: 'BViwH6yvDbz50hkxKzJR',
-      callbackUrl: 'http://pd-api.ap-northeast-2.elasticbeanstalk.com/naver/login/callback',
+      clientId: clientId,
+      callbackUrl: callbackUrl,
       isPopup: false,
       loginButton: { color: "green", type: 3, height: "0" },
     });
