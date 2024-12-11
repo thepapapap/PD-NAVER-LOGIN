@@ -13,20 +13,19 @@
       var params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
       });
-      console.log(params)
-      // var clientId = params.clientId;
-      // var callbackUrl = params.callbackUrl;
-      // var state = Math.random().toString();
-      // var api_url =
-      //   "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=" +
-      //   clientId +
-      //   "&redirect_uri=" +
-      //   callbackUrl +
-      //   "&state=" +
-      //   state;
-      // var link = document.getElementById("naver-login");
-      // link.href = api_url;
-      // link.click();
+      var clientId = params.clientId;
+      var callbackUrl = params.callbackUrl;
+      var state = Math.random().toString();
+      var api_url =
+        "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=" +
+        clientId +
+        "&redirect_uri=" +
+        callbackUrl +
+        "&state=" +
+        state;
+      var link = document.getElementById("naver-login");
+      link.href = api_url;
+      link.click();
     </script>
   </body>
 </html>
