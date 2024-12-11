@@ -9,5 +9,6 @@ const naverLogin = new naver.LoginWithNaverId({
   isPopup: false,
   loginButton: { color: "green", type: 3, height: "0" },
 });
+console.log(clientId, callbackUrl)
 naverLogin.init();
-document.getElementsByTagName("a")[0].click();
+// document.getElementsByTagName("a")[0].click();
