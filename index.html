@@ -4,27 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Naver Login</title>
   </head>
   <body>
-    <a id="naver-login" style="color: transparent">.</a>
+    <a id="naver-login" style="display: none">Naver Login</a>
 
     <script>
-      var params = new Proxy(new URLSearchParams(window.location.search), {
-        get: (searchParams, prop) => searchParams.get(prop),
-      });
-      var clientId = params.clientId;
-      var callbackUrl = params.callbackUrl;
-      var state = Math.random().toString();
-      var api_url =
-        "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=" +
-        clientId +
-        "&redirect_uri=" +
-        callbackUrl +
-        "&state=" +
-        state;
-      var link = document.getElementById("naver-login");
-      link.href = api_url;
+      const params = new URLSearchParams(window.location.search);
+      const clientId = params.get("clientId");
+      const callbackUrl = params.get("callbackUrl");
+      const state = crypto.randomUUID(); // 안전한 state 값 생성
+      localStorage.setItem("naver_state", state);
+      const apiUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&` +
+        `client_id=${encodeURIComponent(clientId)}&` +
+        `redirect_uri=${encodeURIComponent(callbackUrl)}&` +
+        `state=${state}`;
+      const link = document.getElementById("naver-login");
+      link.href = apiUrl;
       link.click();
     </script>
   </body>
